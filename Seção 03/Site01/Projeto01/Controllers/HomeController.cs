@@ -26,7 +26,7 @@ namespace Site01.Controllers
             {
                 if (usuario.Email == "odair.nti@gmail.com" && usuario.Senha == "123456")
                 {
-                    return Redirect("/palavra"); 
+                    return Redirect("/palavra");  
                 }
                 else
                 {
