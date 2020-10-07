@@ -1,0 +1,46 @@
+﻿@{
+    Layout = null;
+}*
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Contatos</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+    <h1>Tela Contatos</h1>
+    <div class="container">
+        <form method="post" action="/contato/ReceberContato">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text"  class="form-control" id="nome" name="nome" placeholder="Digite seu nome">
+                @Html.ValidationMessage("nome")
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="text"  class="form-control" id="email" name="email" placeholder="Digite seu e-mail">
+                @Html.ValidationMessage("email")
+            </div>
+            <div class="form-group">
+                <label for="assunto">Assunto:</label>
+                <input type="text" class="form-control" id="assunto" name="assunto" placeholder="Digite o assunto">
+                @Html.ValidationMessage("assunto")
+            </div>
+            <div class="form-group">
+                <label for="mensagem">Mensagem:</label>
+                <textarea type="text" class="form-control" id="mensagem" name="mensagem" placeholder="Digite sua mensagem"></textarea>
+                @Html.ValidationMessage("mensagem")
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        @ViewBag.Mensagem
+    </div>
+
+
+    <footer>Todos os direitos reservados. &copy; 2019 - @DateTime.Now.Year </footer>
+</body>
+</html>
