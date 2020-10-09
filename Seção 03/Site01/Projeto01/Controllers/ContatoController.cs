@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Site01.Library.Mail;
 using Site01.Models;
 
@@ -14,7 +10,7 @@ namespace Site01.Controllers
         {
             return View();
         }
-        public IActionResult ReceberContato([FromForm]Contato contato)
+        public IActionResult ReceberContato([FromForm] Contato contato)
         {
             if (ModelState.IsValid)
             {
@@ -24,10 +20,10 @@ namespace Site01.Controllers
             }
             else
             {
-               return View("Index");
+                return View("Index");
             }
         }
-        
+
 
     }
 }

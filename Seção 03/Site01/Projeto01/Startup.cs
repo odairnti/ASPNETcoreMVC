@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Mvc;
+using Site01.Database;
 
 namespace Projeto01
 {
@@ -22,7 +17,15 @@ namespace Projeto01
             services.AddControllers(options => options.EnableEndpointRouting = false);
             services.AddControllersWithViews(options => options.EnableEndpointRouting = false);
             services.AddRazorPages().AddMvcOptions(options => options.EnableEndpointRouting = false);
+
+
+            services.AddDbContext<DatabaseContext>(options =>
+            {
+                options.UseSqlServer("Server=(localDB)\\MSSQLLocalDB;Database=Site01;Integrated Security = True;");
+            });
         }
+
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

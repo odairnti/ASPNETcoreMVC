@@ -1,10 +1,6 @@
 ﻿using Site01.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Threading.Tasks;
 
 namespace Site01.Library.Mail
 {
@@ -31,7 +27,7 @@ namespace Site01.Library.Mail
 
             mensagem.IsBodyHtml = true;
             mensagem.Body = "<h1>Formulário para Contato </h1>" + vConteudo;
-            
+
             smtp.Timeout = 20_000;
             await smtp.SendMailAsync(mensagem);
 

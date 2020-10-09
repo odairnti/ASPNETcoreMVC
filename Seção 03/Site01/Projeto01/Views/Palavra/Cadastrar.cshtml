@@ -1,0 +1,26 @@
+﻿@model Site01.Models.Palavra
+
+@{
+    ViewBag.title = "Tela de Cadastro";
+}
+@{
+    Layout = "_Layout"; <!--o sistema sabe que tem que buscar na pasta ~/Views/Shared/-->
+}
+
+<form method="post">
+    <div class="form-group">
+        <input type="hidden" name="id" value="@Model.ID" />
+        <label for="descricao">Palavra:</label>
+        <input type="text" class="form-control" value="@Model.Descricao" id="descricao" name="descricao" placeholder="Digite a palavra">
+        @Html.ValidationMessage("descricao")
+    </div>
+    <div class="form-group">
+        <label for="assunto">Nível:</label>
+        <input type="text" class="form-control" value="@Model.Nivel" id="nivel" name="nivel" placeholder="Digite o Nível 1-facil 2-Medio 3-Dificil">
+        @Html.ValidationMessage("nivel")
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+@ViewBag.Mensagem
+
+
