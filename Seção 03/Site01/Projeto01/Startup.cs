@@ -23,6 +23,10 @@ namespace Projeto01
             {
                 options.UseSqlServer("Server=(localDB)\\MSSQLLocalDB;Database=Site01;Integrated Security = True;");
             });
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
         }
 
 
@@ -34,6 +38,7 @@ namespace Projeto01
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSession();
 
             app.UseRouting();
             app.UseStaticFiles();

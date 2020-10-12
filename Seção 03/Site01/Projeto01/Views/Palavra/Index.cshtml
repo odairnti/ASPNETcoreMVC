@@ -1,14 +1,40 @@
-﻿@model List<Site01.Models.Palavra>
+﻿@model X.PagedList.IPagedList<Site01.Models.Palavra>
+
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+
 
 @{
     ViewBag.title = "Consulta Cadastro";
+    var pagedList = (IPagedList)Model;
 }
 @{
-    Layout = "_Layout"; <!--o sistema sabe que tem que buscar na pasta ~/Views/Shared/-->
+    //Layout = "_Layout"; <!--o sistema sabe que tem que buscar na pasta ~/Views/Shared/-->
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
+@{
+    if (TempData["Mensagem"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["Mensagem"]
+        </div>
+    }
+}
+@{
+    if (TempData["MensagemExclusao"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["MensagemExclusao"]
+        </div>
+    }
+}
+
+<link href="/css/PagedList.css" rel="stylesheet" type="text/css" />
+
 <a href="/palavra/cadastrar" class="btn btn-primary">Cadastrar</a>
-<span><b>Total de Registro</b> @Model.Count </span>
+<span><b>Total de Registro</b> @Model.TotalItemCount </span>
 <table class="table">
     <thead class="thead-dark">
         <tr>
@@ -34,5 +60,6 @@
     </tbody>
 </table>
 
+@Html.PagedListPager(pagedList, page => Url.Action("Index", new { page }))
 
 
